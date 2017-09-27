@@ -1,0 +1,250 @@
+.container {
+    padding: 0;
+    position: relative;
+    @include media (medium-up) {
+        padding: 0 1rem;
+    }
+    &--tablet{
+        @include media (tablet-down){
+            padding: 4rem $size_min $size_regular;
+        }
+    }
+}
+.subcontainer{
+    @include flex-row;
+    justify-content: space-between;
+    @include media (tablet-down){
+        flex-direction: column;
+    }
+    .share-list{
+        @include media (tablet-down){
+            bottom: -2rem;
+        }
+    }
+}
+.horizon{
+    margin-top: 3rem;
+    position: relative;
+    &:last-child{
+        margin-bottom: 3rem;
+    }
+    &__container{
+        @extend .gridle-gr-9;
+        margin: 0;
+        @include media (tablet-down){
+            width: 100%;
+            margin: 0;
+            max-width: 100%;
+        }
+    }
+    &--header{
+        @extend .container;
+        margin-top: $size_double;
+    }
+    &--body{
+        @extend .container;
+        margin-top: $size_regular;
+    }
+    &--main{
+        margin: 0;
+        padding: 0;
+    }
+    &--overlay{
+        @extend .horizon--main;
+        &__wraper{
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            -webkit-filter: grayscale(100%);
+            -ms-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+        &__container{
+            padding: 3rem;
+            position: relative;
+            z-index: 1;
+            background: rgba($color_main_regular, .85);
+            color: $color_white;
+        }
+        .horizon{
+            &__title{
+                color: $color_white;
+                z-index: 4;
+            }
+            &__excerpt{
+                font-size: $size_small;
+                line-height: $size_avg;
+                font-weight: $weight_semibold;
+                text-align: center;
+                padding: 1rem 5rem 0;
+                @include media (midlarge-down){
+                    padding: 1rem 2rem 0;
+                }
+                @include media (tablet-down){
+                    padding: 0;
+                }
+            }
+            &__buttons{
+                padding: $size_double 0 0;
+                @include flex-row;
+                justify-content: space-around;
+                @include media (tablet-down){
+                    flex-direction: column;
+                    align-items: center;
+                    padding: $size_double 0 0;
+                    .button{
+                        margin: 0 0 $size_regular;
+                        &:last-child{
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__title{
+        @extend .common-box__title;
+        text-transform: uppercase;
+        font-weight: $weight_semibold;
+        color: $color_main_regular;
+        border-bottom: 1px solid $color_grey_regular;
+        padding-bottom: .25rem;
+        margin-bottom: .75rem;
+        @include media (medium-down){
+            margin-left: $size_half;
+            margin-right: $size_half;
+        }
+        &--huge{
+            @extend .common-box__title--huge;
+            border: none;
+            text-align: center;
+        }
+        &--link{
+            a{
+                color: $color_main_regular;
+                &:hover{
+                    color: $color_secondary_regular;
+                    text-decoration: none;
+                }
+                &:after{
+                    content: $icon-chevron_right;
+                    font-family: $ketchup;
+                    padding-left: .25rem;
+                }
+            }
+        }
+    }
+    &__subtitle{
+        color: $color_grey_regular;
+        border-bottom: 1px solid $color_grey_regular;
+        margin: 0 0 $size_half 0;
+    }
+    &__sector{
+        margin: $size_tall 0 $size_regular;
+        background: $color_grey_lightest;
+        padding-top: 1rem;
+        @include media (medium-down){
+            margin-left: $size_half;
+            margin-right: $size_half;
+        }
+        &__title{
+            @extend .common-box__title--huge;
+            @include media (tablet-down){
+                margin-left: $size_half;
+                margin-right: $size_half;
+            }
+        }
+        /*ARTICLE on ACTUALIDAD*/
+        .common-box__article{
+            &--horizontal{
+                @include media (medium-down){
+                    flex-direction: row !important;
+                }
+                .common-box{
+                    &__figure{
+                        flex: 3;
+                        @include media (medium-down){
+                            flex: 2;
+                            padding: $size_half;
+                            padding-left: 0;
+                        }
+                    }
+                    &__body{
+                        flex: 4;
+                        @include media (medium-down){
+                            flex: 4;
+                            padding-left: $size_half;
+                        }
+                    }
+                }
+            }
+            @include media (phablet-down){
+                flex-direction: column !important;
+                .common-box{
+                    &__figure{
+                        flex: 1 !important;
+                        padding: 0 !important;
+                    }
+                    &__body{
+                        flex: 1 !important;
+                        padding: $size_half 0;
+                    }
+                    &__meta{
+                        margin: 0 !important;
+                    }
+                    &__title{
+                        margin: $size_half 0 !important;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.slider{
+    &--featured{
+        background: $color_main_regular;
+        .common-box{
+            justify-content: center;
+            align-content: center;
+            align-items: stretch;
+            &__figure{
+                flex: 3 0 0%;
+            }
+            &__body{
+                flex: 2 0 0%;
+                padding: 1rem 2rem;
+                background: $color_main_regular;
+                color: $color_white;
+                @include flex-column;
+                align-content: center;
+                align-items: center;
+                justify-content: center;
+            }
+            &__title{
+                font-size: $size_avg;
+                line-height: $size_double;
+                color: $color_white;
+                a{
+                    color: $color_white;
+                    &:hover{
+                        color: $color_white;
+                        text-decoration: underline;
+                    }
+                }
+            }
+            &__excerpt{
+                font-weight: $weight_regular;
+                font-size: $size_small;
+                line-height: $size_midreg;
+            }
+        }
+    }
+}
